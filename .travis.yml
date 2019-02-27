@@ -35,6 +35,7 @@ script:
 
 after_script:
   - docker images
-  - bash docker_push.sh "$image"
+  - echo $PWD
+  - bash ../../docker_push.sh "$image"
 
 # vim:set et ts=2 sw=2:
