@@ -41,7 +41,8 @@ declare -A variantBases=(
 	[cli]='cli'
 )
 
-travisEnv=
+travisEnv='\n  matrix:'
+travisEnv+=
 for phpVersion in "${phpVersions[@]}"; do
 	phpVersionDir="$phpVersion"
 	phpVersion="${phpVersion#php}"
@@ -83,6 +84,7 @@ for phpVersion in "${phpVersions[@]}"; do
 		travisEnv+='\n  - VARIANT='"$dir"
 	done
 done
+travisEnv+='\n  global:'
 travisEnv+='\n  - VERSION='"$current"
 
 travis="$(awk -v 'RS=\n\n' '$1 == "env:" { $0 = "env:'"$travisEnv"'" } { printf "%s%s", $0, RS }' .travis.yml)"

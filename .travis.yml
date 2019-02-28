@@ -2,6 +2,7 @@ language: bash
 services: docker
 
 env:
+  matrix:
   - VARIANT=php7.1/apache
   - VARIANT=php7.1/fpm
   - VARIANT=php7.1/fpm-alpine
@@ -14,6 +15,7 @@ env:
   - VARIANT=php7.3/fpm
   - VARIANT=php7.3/fpm-alpine
   - VARIANT=php7.3/cli
+  global:
   - VERSION=4.9.9
 
 install:
