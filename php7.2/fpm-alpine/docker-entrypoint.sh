@@ -150,7 +150,7 @@ if [[ "$1" == apache2* ]] || [ "$1" == php-fpm ]; then
 
 		if [ ! -e wp-config.php ]; then
 			awk '
-				/^\/\*.*stop editing.*\*\/$/ && c == 0 {
+				/^\/\*編集が必要なのはここまでです.*\*\/$/ && c == 0 {
 					c = 1
 					system("cat")
 					if (ENVIRON["WORDPRESS_CONFIG_EXTRA"]) {
